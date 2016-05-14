@@ -1,0 +1,20 @@
+<ion-content>
+	<ion-list>
+		<ion-item>
+			<ion-label stacked>Name</ion-label>
+			<ion-input type="text" [(ngModel)]="medicine.name"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label stacked>Quantity</ion-label>
+			<ion-input type="number" [(ngModel)]="medicine.quantity"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label stacked>Morning hours</ion-label>
+			<ion-input type="time" [(ngModel)]="medicine.morningHours"></ion-input>
+		</ion-item>
+		<ion-item>
+			<button secondary outline (click)="save()">Save</button>
+			<button danger outline (click)="delete()" *ngIf="medicine.id">Delete</button>
+		</ion-item>
+	</ion-list>
+</ion-content>
