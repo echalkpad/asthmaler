@@ -7,8 +7,8 @@ import {HealthPage} from './../health/health.page';
 })
 export class MainPage {
 
-	medicinesPageRoot: any = MedicinesPage;
-	healthPageRoot: any = HealthPage;
+  medicinesPageRoot:any = MedicinesPage;
+  healthPageRoot:any = HealthPage;
 
   constructor() {
 

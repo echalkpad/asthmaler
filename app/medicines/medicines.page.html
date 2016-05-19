@@ -1,17 +1,19 @@
 <ion-navbar *navbar>
-	  Your medicines
+    Your medicines
 </ion-navbar>
 
 <ion-content>
-	<ion-list>
-  <ion-item *ngFor="#medicine of medicines">
-		 <ion-thumbnail item-left>
-      <img src="img/no-thumb.png">
-    </ion-thumbnail>
-    <h2>{{medicine.name}}</h2>
-    <p>Quantity : {{medicine.quantity}}</p>
-    <button clear item-right (click)="openMedicine(medicine)">View</button>
-  </ion-item>
-</ion-list>
-	<button fab fab-right fab-bottom (click)="newMedicine()"><ion-icon name="add-circle"></ion-icon></button>
+    <ion-list>
+        <ion-item *ngFor="#medicine of medicines">
+            <ion-thumbnail item-left>
+                <img src="img/no-thumb.png">
+            </ion-thumbnail>
+            <h2>{{medicine.name}}</h2>
+            <p>Quantity : {{medicine.quantity}}</p>
+            <button clear item-right (click)="openMedicine(medicine)">View</button>
+        </ion-item>
+    </ion-list>
+    <button fab fab-right fab-bottom (click)="newMedicine()">
+        <ion-icon name="add-circle"></ion-icon>
+    </button>
 </ion-content>

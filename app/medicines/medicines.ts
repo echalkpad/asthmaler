@@ -8,29 +8,29 @@ import Medicine from './medicine';
 })
 export class MedicinesPage {
 
-	private nav: NavController;
-	private mds: MedicineDataService;
-	medicines: Medicine[];
+  private nav:NavController;
+  private mds:MedicineDataService;
+  medicines:Medicine[];
 
-  constructor(nav: NavController, medicineDataService: MedicineDataService) {
-		this.nav = nav;
-		this.mds = medicineDataService;
+  constructor(nav:NavController, medicineDataService:MedicineDataService) {
+    this.nav = nav;
+    this.mds = medicineDataService;
   }
 
-	onPageDidEnter() {
-		this.mds.getMedicines().then((medicines) => {
-			this.medicines = medicines;
-			console.log(medicines);
-			console.log(this.medicines)
-		})
-	}
+  onPageDidEnter() {
+    this.mds.getMedicines().then((medicines) => {
+      this.medicines = medicines;
+      console.log(medicines);
+      console.log(this.medicines)
+    })
+  }
 
-	openMedicine(medicine: Medicine) {
-		this.nav.push(MedicinePage, {"medicine": medicine });
-	}
+  openMedicine(medicine:Medicine) {
+    this.nav.push(MedicinePage, {"medicine": medicine});
+  }
 
-	newMedicine() {
-		this.nav.push(MedicinePage, {"medicine": new Medicine(undefined, undefined, undefined, undefined) });
-	}
+  newMedicine() {
+    this.nav.push(MedicinePage, {"medicine": new Medicine(undefined, undefined, undefined)});
+  }
 
 }

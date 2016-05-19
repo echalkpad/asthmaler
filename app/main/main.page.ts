@@ -8,9 +8,9 @@ import {SettingsPage} from './../settings/settings.page';
 })
 export class MainPage {
 
-	medicinesPageRoot: any = MedicinesPage;
-	healthPageRoot: any = HealthPage;
-  settingsPageRoot: any= SettingsPage;
+  medicinesPageRoot:any = MedicinesPage;
+  healthPageRoot:any = HealthPage;
+  settingsPageRoot:any = SettingsPage;
 
   constructor() {
 

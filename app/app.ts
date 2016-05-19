@@ -3,18 +3,18 @@ import {StatusBar} from 'ionic-native';
 import {MainPage} from './main/main.page';
 import {MedicineDataService} from './medicines/medicineData.service';
 import {MedicinesNotificationService} from './medicines/medicinesNotification.service';
-import * as moment from 'moment';
+import {SettingsService} from './settings/settings.service';
 
 @App({
   template: '<ion-nav [root]="rootPage"></ion-nav>',
-  providers: [MedicineDataService, MedicinesNotificationService],
+  providers: [MedicineDataService, MedicinesNotificationService, SettingsService],
   config: {} // http://ionicframework.com/docs/v2/api/config/Config/
 })
 export class MyApp {
 
-  rootPage: any = MainPage;
+  rootPage:any = MainPage;
 
-  constructor(platform: Platform) {
+  constructor(platform:Platform) {
     platform.ready().then(() => {
 
 

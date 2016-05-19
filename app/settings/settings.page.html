@@ -1,7 +1,23 @@
 <ion-navbar *navbar>
-	  Settings
+    Settings
 </ion-navbar>
 
 <ion-content>
-
+    <ion-list>
+        <ion-item>
+            <ion-label stacked>Morning hours</ion-label>
+            <ion-input type="time" [(ngModel)]="morningHours"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Midday hours</ion-label>
+            <ion-input type="time" [(ngModel)]="middayHours"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Evening hours</ion-label>
+            <ion-input type="time" [(ngModel)]="eveningHours"></ion-input>
+        </ion-item>
+        <ion-item>
+            <button secondary outline (click)="save()">Save</button>
+        </ion-item>
+    </ion-list>
 </ion-content>
