@@ -6,7 +6,7 @@ import {MedicinesNotificationService} from './medicines/medicinesNotification.se
 import {SettingsService} from './settings/settings.service';
 
 @App({
-  template: '<ion-nav [root]="rootPage"></ion-nav>',
+  templateUrl: 'build/app.html',
   providers: [MedicineDataService, MedicinesNotificationService, SettingsService],
   config: {} // http://ionicframework.com/docs/v2/api/config/Config/
 })
