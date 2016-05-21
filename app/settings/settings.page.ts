@@ -34,7 +34,7 @@ export class SettingsPage {
     this.settingsService.eveningHours = this.eveningHours;
     this.settingsService.save().then(() => {
       let alert = Alert.create({
-        title: 'Ustawienia zostały zapisane',
+        title: 'Settings saved',
         buttons: ['OK']
       });
       this.nav.present(alert);
