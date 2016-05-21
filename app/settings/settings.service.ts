@@ -1,5 +1,5 @@
 import {Injectable} from 'angular2/core';
-import {Storage, SqlStorage, Platform}from 'ionic-angular';
+import {Storage, SqlStorage}from 'ionic-angular';
 
 @Injectable()
 export class SettingsService {
@@ -14,15 +14,11 @@ export class SettingsService {
   eveningHours:string;
 
   private storage:Storage;
-  private platform:Platform;
 
-  constructor(platform:Platform) {
-    this.platform = platform;
-    platform.ready().then(() => {
-      this.storage = new Storage(SqlStorage);
-      this.storage.query(`create table  if not exists settings (name TEXT, value TEXT)`);
-      this.loadSettings();
-    });
+  constructor() {
+    this.storage = new Storage(SqlStorage);
+    this.storage.query(`create table  if not exists settings (name TEXT, value TEXT)`);
+    this.loadSettings();
   }
 
   save() {
