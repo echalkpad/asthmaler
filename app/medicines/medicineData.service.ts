@@ -46,7 +46,7 @@ export class MedicineDataService {
     this.storage.query(`UPDATE medicine set name = '${medicine.name}', quantity = ${medicine.quantity}, morning = ${medicine.morning ? 1 : 0}, 
     midday = ${medicine.midday ? 1 : 0}, evening = ${medicine.evening ? 1 : 0} where id = ${medicine.id}`).then((data) => {
       this.mns.schedule(medicine);
-      this.mns.unschedule2(this.medicines);
+      this.mns.unschedule(this.medicines);
     })
   }
 

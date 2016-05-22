@@ -31,7 +31,7 @@ export class MedicinesNotificationService {
     });
   }
 
-  unschedule2(medicines:Medicine[]) {
+  unschedule(medicines:Medicine[]) {
     if (medicines.every((medicine) => {
           return !medicine.morning
         })) {
