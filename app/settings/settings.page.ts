@@ -24,15 +24,7 @@ export class SettingsPage {
   }
 
   save() {
-    let morningHoursRemoved = this.settingsService.morningHours && !this.morningHours;
-    let middayHoursRemoved = this.settingsService.middayHours && !this.middayHours;
-    let eveningHoursRemoved = this.settingsService.eveningHours && !this.eveningHours;
-
-
-    this.settingsService.morningHours = this.morningHours;
-    this.settingsService.middayHours = this.middayHours;
-    this.settingsService.eveningHours = this.eveningHours;
-    this.settingsService.save().then(() => {
+    this.settingsService.save(this.morningHours, this.middayHours, this.eveningHours).then(() => {
       let alert = Alert.create({
         title: 'Settings saved',
         buttons: ['OK']
