@@ -12,9 +12,9 @@ import {SettingsService} from './settings/settings.service';
 })
 export class MyApp {
 
-  rootPage:any = MainPage;
+  rootPage: any = MainPage;
 
-  constructor(platform:Platform) {
+  constructor(platform: Platform) {
     platform.ready().then(() => {
 
 

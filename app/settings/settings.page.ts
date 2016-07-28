@@ -8,14 +8,14 @@ import set = Reflect.set;
 })
 export class SettingsPage {
 
-  private settingsService:SettingsService;
-  private nav:NavController;
+  private settingsService: SettingsService;
+  private nav: NavController;
 
-  morningHours:string;
-  middayHours:string;
-  eveningHours:string;
+  morningHours: string;
+  middayHours: string;
+  eveningHours: string;
 
-  constructor(nav:NavController, settingsService:SettingsService) {
+  constructor(nav: NavController, settingsService: SettingsService) {
     this.nav = nav;
     this.settingsService = settingsService;
     this.morningHours = settingsService.morningHours;

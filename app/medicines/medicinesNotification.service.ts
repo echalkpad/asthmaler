@@ -8,18 +8,18 @@ import {SettingsService}from './../settings/settings.service';
 @Injectable()
 export class MedicinesNotificationService {
 
-  private storage:Storage;
-  private settingsService:SettingsService;
+  private storage: Storage;
+  private settingsService: SettingsService;
 
-  constructor(settingsService:SettingsService) {
+  constructor(settingsService: SettingsService) {
     this.storage = new Storage(SqlStorage);
     this.storage.query(`CREATE TABLE IF NOT EXISTS medicine_reminder (id INTEGER PRIMARY KEY AUTOINCREMENT, type TEXT, hours TEXT)`);
     this.settingsService = settingsService;
   }
 
-  schedule(medicine:Medicine) {
+  schedule(medicine: Medicine) {
     return new Promise((resolve: Function) => {
-        this.findAll().then((result) => {
+      this.findAll().then((result) => {
         if (medicine.morning && !result.get('MORNING')) {
           resolve(this.scheduleSingle('MORNING', this.settingsService.morningHours));
 
@@ -35,25 +35,25 @@ export class MedicinesNotificationService {
     })
   }
 
-  unschedule(medicines:Medicine[]) {
+  unschedule(medicines: Medicine[]) {
     if (medicines.every((medicine) => {
-          return !medicine.morning
-        })) {
+      return !medicine.morning
+    })) {
       this.unsheduleSingle('MORNING');
     }
     if (medicines.every((medicine) => {
-          return !medicine.midday
-        })) {
+      return !medicine.midday
+    })) {
       this.unsheduleSingle('MIDDAY');
     }
     if (medicines.every((medicine) => {
-          return !medicine.evening
-        })) {
+      return !medicine.evening
+    })) {
       this.unsheduleSingle('EVENING');
     }
   }
 
-  unsheduleSingle(type:string) {
+  unsheduleSingle(type: string) {
     this.storage.query(`select * from medicine_reminder where type = '${type}'`).then((data) => {
       if (data.res.rows.length > 0) {
         let row = data.res.rows.item(0);

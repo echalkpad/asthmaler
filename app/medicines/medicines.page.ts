@@ -8,11 +8,11 @@ import Medicine from './medicine';
 })
 export class MedicinesPage {
 
-  private nav:NavController;
-  private mds:MedicineDataService;
-  medicines:Medicine[];
+  private nav: NavController;
+  private mds: MedicineDataService;
+  medicines: Medicine[];
 
-  constructor(nav:NavController, medicineDataService:MedicineDataService) {
+  constructor(nav: NavController, medicineDataService: MedicineDataService) {
     this.nav = nav;
     this.mds = medicineDataService;
   }
@@ -23,12 +23,12 @@ export class MedicinesPage {
     })
   }
 
-  openMedicine(medicine:Medicine) {
-    this.nav.push(MedicinePage, {"medicine": medicine});
+  openMedicine(medicine: Medicine) {
+    this.nav.push(MedicinePage, { "medicine": medicine });
   }
 
   newMedicine() {
-    this.nav.push(MedicinePage, {"medicine": new Medicine(undefined, undefined, undefined)});
+    this.nav.push(MedicinePage, { "medicine": new Medicine(undefined, undefined, undefined) });
   }
 
 }

@@ -18,7 +18,7 @@ let myApp = null;
 
 describe('MyApp', () => {
 
-  beforeEach(function() {
+  beforeEach(function () {
     let platform = (<any>new MockClass());
     myApp = new MyApp(platform);
   });

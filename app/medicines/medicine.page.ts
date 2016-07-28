@@ -8,13 +8,13 @@ import {SettingsService} from './../settings/settings.service'
 })
 export class MedicinePage {
 
-  medicine:Medicine;
-  private nav:NavController;
-  private mds:MedicineDataService;
-  private originalMedicine:Medicine;
-  private settingsService:SettingsService;
+  medicine: Medicine;
+  private nav: NavController;
+  private mds: MedicineDataService;
+  private originalMedicine: Medicine;
+  private settingsService: SettingsService;
 
-  constructor(nav:NavController, navParams:NavParams, mds:MedicineDataService, settingsService:SettingsService) {
+  constructor(nav: NavController, navParams: NavParams, mds: MedicineDataService, settingsService: SettingsService) {
     this.nav = nav;
     this.medicine = Object.assign({}, navParams.get('medicine'));
     this.originalMedicine = navParams.data.medicine;

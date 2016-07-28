@@ -1,6 +1,6 @@
 import {SettingsService} from './settings.service';
 
-let settingsService:SettingsService = null;
+let settingsService: SettingsService = null;
 
 
 describe('SettingsService', () => {
@@ -40,30 +40,33 @@ describe('SettingsService', () => {
 
   it('it should map morning hour setting properly', () => {
     (<any>settingsService).mapSettings({
-      rows : {
-        0: {name: 'MORNING_HOURS', value: '11'},
-        item: function(index) {return this[index]},
-        length: 1}
+      rows: {
+        0: { name: 'MORNING_HOURS', value: '11' },
+        item: function (index) { return this[index] },
+        length: 1
+      }
     });
     expect((settingsService.morningHours)).toEqual('11');
   });
 
   it('it should map midday hour setting properly', () => {
     (<any>settingsService).mapSettings({
-      rows : {
-        0: {name: 'MIDDAY_HOURS', value: '12'},
-        item: function(index) {return this[index]},
-        length: 1}
+      rows: {
+        0: { name: 'MIDDAY_HOURS', value: '12' },
+        item: function (index) { return this[index] },
+        length: 1
+      }
     });
     expect((settingsService.middayHours)).toEqual('12');
   });
 
   it('it should map evening hour setting properly', () => {
     (<any>settingsService).mapSettings({
-      rows : {
-        0: {name: 'EVENING_HOURS', value: '13'},
-        item: function(index) {return this[index]},
-        length: 1}
+      rows: {
+        0: { name: 'EVENING_HOURS', value: '13' },
+        item: function (index) { return this[index] },
+        length: 1
+      }
     });
     expect((settingsService.eveningHours)).toEqual('13');
   });

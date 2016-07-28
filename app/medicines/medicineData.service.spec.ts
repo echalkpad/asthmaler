@@ -21,12 +21,14 @@ describe('MedicineDataService', () => {
 
 
   it('should load medicines properly', (done) => {
-    let fetchMedicinesReturnValue = new Promise((resolve) => {resolve({
+    let fetchMedicinesReturnValue = new Promise((resolve) => {
+      resolve({
         0: medicine1,
         1: medicine2,
-        item: function(index) {return this[index]},
+        item: function (index) { return this[index] },
         length: 2
-    })});
+      })
+    });
     spyOn(medicineDataService, 'fetchMedicines').and.returnValue(fetchMedicinesReturnValue);
     medicineDataService.loadMedicines().then(() => {
       expect((<any>medicineDataService).medicines).toEqual([medicine1, medicine2]);

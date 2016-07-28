@@ -8,11 +8,11 @@ export class SettingsService {
   MIDDAY_HOURS_NAME = 'MIDDAY_HOURS';
   EVENING_HOURS_NAME = 'EVENING_HOURS';
 
-  morningHours:string;
-  middayHours:string;
-  eveningHours:string;
+  morningHours: string;
+  middayHours: string;
+  eveningHours: string;
 
-  private storage:Storage;
+  private storage: Storage;
 
   constructor() {
     this.storage = new Storage(SqlStorage);
@@ -20,7 +20,7 @@ export class SettingsService {
     this.loadSettings().then((data => this.mapSettings(data.res)));
   }
 
-  save(morningHours:string, middayHours:string, eveningHours:string) {
+  save(morningHours: string, middayHours: string, eveningHours: string) {
     return Promise.all([
       this.saveSetting(this.MORNING_HOURS_NAME, morningHours),
       this.saveSetting(this.MIDDAY_HOURS_NAME, middayHours),
@@ -30,18 +30,18 @@ export class SettingsService {
 
   private saveSetting(name, value) {
     let actualValue = this.getSetting(name);
-    if(value && actualValue) {
+    if (value && actualValue) {
       return this.updateSetting(name, value);
-    }else if(value && !actualValue) {
+    } else if (value && !actualValue) {
       return this.insertSetting(name, value);
-    }else if(!value && actualValue) {
+    } else if (!value && actualValue) {
       return this.removeSetting(name);
-    }else {
+    } else {
       return new Promise((resolve) => resolve(true));
     }
   }
 
-  private getSetting(name):string {
+  private getSetting(name): string {
     switch (name) {
       case this.MORNING_HOURS_NAME:
         return this.morningHours;
