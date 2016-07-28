@@ -1,7 +1,18 @@
-# asthmaler
+asthmaler
+===================
 Ionic2 app to monitor your health, your medicines supplies and to remind you about daily medicines
 
-Run using ionic cli commands :
+##Run
 
-ionic serve to run in browser
-ionic run android to run on android device
+###In browser
+```
+$ ionic serve
+```
+###On android device
+```
+$ ionic run android
+```
+##Test
+```
+karma start
+```
