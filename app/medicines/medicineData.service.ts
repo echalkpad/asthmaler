@@ -20,12 +20,9 @@ export class MedicineDataService {
   }
 
   loadMedicines() {
-    return new Promise((resolve: Function) => {
-      this.fetchMedicines().then((medicines) => {
-        console.log(medicines);
-        Array.prototype.push.apply(this.medicines, medicines);
-        resolve(medicines);
-      });
+    return this.fetchMedicines().then((medicines) => {
+      Array.prototype.push.apply(this.medicines, medicines);
+      return medicines;
     });
   }
 
@@ -72,11 +69,9 @@ export class MedicineDataService {
   }
 
   private fetchMedicines(): Promise<Medicine[]> {
-    return new Promise((resolve: Function) => {
-      this.storage.query(`select * from medicine`).then((data) => {
-        resolve(this.convertSqlResult(data.res));
-      })
-    });
+    return this.storage.query(`select * from medicine`).then((data) => {
+      return this.convertSqlResult(data.res);
+    })
   }
 
   private convertSqlResult(res) {

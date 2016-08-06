@@ -18,21 +18,19 @@ export class MedicinesNotificationService {
   }
 
   schedule(medicine: Medicine) {
-    return new Promise((resolve: Function) => {
-      this.findAll().then((result) => {
-        if (medicine.morning && !result.get('MORNING')) {
-          resolve(this.scheduleSingle('MORNING', this.settingsService.morningHours));
+    return this.findAll().then((result) => {
+      if (medicine.morning && !result.get('MORNING')) {
+        return this.scheduleSingle('MORNING', this.settingsService.morningHours);
 
-        }
-        if (medicine.midday && !result.get('MIDDAY')) {
-          resolve(this.scheduleSingle('MIDDAY', this.settingsService.middayHours));
+      }
+      if (medicine.midday && !result.get('MIDDAY')) {
+        return this.scheduleSingle('MIDDAY', this.settingsService.middayHours);
 
-        }
-        if (medicine.evening && !result.get('EVENING')) {
-          resolve(this.scheduleSingle('EVENING', this.settingsService.eveningHours));
-        }
-      });
-    })
+      }
+      if (medicine.evening && !result.get('EVENING')) {
+        return this.scheduleSingle('EVENING', this.settingsService.eveningHours);
+      }
+    });
   }
 
   unschedule(medicines: Medicine[]) {
@@ -76,16 +74,13 @@ export class MedicinesNotificationService {
   }
 
   private scheduleSingle(type, hours) {
-    return new Promise((resolve: Function) => {
-      this.insertNotification(type, hours).then((data) => {
-        let [hh, mm] = hours.split(':');
-        let hoursDate = moment().hours(hh).minutes(mm);
-        if (hoursDate.toDate() < new Date()) {
-          hoursDate.add(1, 'h');
-        }
-        this.scheduleLocalNotification(data.id, 'Take your pills!', new Date(hoursDate.valueOf()));
-        resolve(true);
-      })
+    return this.insertNotification(type, hours).then((data) => {
+      let [hh, mm] = hours.split(':');
+      let hoursDate = moment().hours(hh).minutes(mm);
+      if (hoursDate.toDate() < new Date()) {
+        hoursDate.add(1, 'h');
+      }
+      return this.scheduleLocalNotification(data.id, 'Take your pills!', new Date(hoursDate.valueOf()));
     });
   };
 
